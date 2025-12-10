@@ -56,8 +56,20 @@ public class Main {
                             System.out.println(i++ + ". " + c);
                         }
                     }
-
                 }
+                case 5 -> {
+                    System.out.print("Enter name to delete: ");
+                    String delName = scanner.nextLine();
+                    boolean deleted = dao.deleteByName(delName);
+                    System.out.println(deleted ? "Contact(s) deleted." : "No contact found with that name.");
+                }
+                case 6 -> {
+                    System.out.print("Enter mobile to delete: ");
+                    String delMobile = scanner.nextLine();
+                    boolean deleted = dao.deleteByMobile(delMobile);
+                    System.out.println(deleted ? "Contact deleted." : "No contact found with that mobile.");
+                }
+
 
                 case 0 -> System.out.println("Exiting...");
                 default -> System.out.println("Invalid option.");

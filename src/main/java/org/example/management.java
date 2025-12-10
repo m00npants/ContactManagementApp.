@@ -37,4 +37,36 @@ public class management {
         return sortedContacts;
     }
 
+    public boolean deleteByName(String name) {
+        Iterator<Contact> iterator = contacts.iterator();
+        boolean removed = false;
+
+        while (iterator.hasNext()) {
+            Contact c = iterator.next();
+            if (c.getName().equalsIgnoreCase(name)) {
+                iterator.remove();
+                contactSet.remove(c);
+                removed = true;
+            }
+        }
+        return removed;
+    }
+
+    public boolean deleteByMobile(String mobile) {
+        Iterator<Contact> iterator = contacts.iterator();
+        boolean removed = false;
+
+        while (iterator.hasNext()) {
+            Contact c = iterator.next();
+            if (c.getMobile().equals(mobile)) {
+                iterator.remove();
+                contactSet.remove(c);
+                removed = true;
+                break;
+            }
+        }
+        return removed;
+    }
+
+
 }
