@@ -36,4 +36,5 @@ public class management {
         sortedContacts.sort(Comparator.comparing(Contact::getName, String.CASE_INSENSITIVE_ORDER));
         return sortedContacts;
     }
+
 }

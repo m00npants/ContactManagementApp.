@@ -14,6 +14,8 @@ public class Main {
             System.out.println("2. Search by Name");
             System.out.println("3. Search by Mobile");
             System.out.println("4. Display All Contacts");
+            System.out.println("5. Delete by Name");
+            System.out.println("6. Delete by Mobile");
             System.out.println("0. Exit");
             System.out.print("Choose an option: ");
             choice = scanner.nextInt();
@@ -54,6 +56,7 @@ public class Main {
                             System.out.println(i++ + ". " + c);
                         }
                     }
+
                 }
 
                 case 0 -> System.out.println("Exiting...");
