@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a5a805b2-fe9e-4460-973a-cc590f85fa19" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../ContactManagementApp/src/main/java/org/example/Contact.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ContactManagementApp/src/main/java/org/example/management.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ContactManagementApp/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ContactManagementApp/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ContactManagementApp/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ContactManagementApp/src/main/java/org/example/Main.java" afterDir="false" />
+    <list default="true" id="a5a805b2-fe9e-4460-973a-cc590f85fa19" name="Changes" comment="added contatcs and management">
+      <change beforePath="$PROJECT_DIR$/../ContactManagementApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ContactManagementApp/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ContactManagementApp/src/main/java/org/example/management.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ContactManagementApp/src/main/java/org/example/management.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,6 +125,18 @@
       <option name="presentableId" value="Default" />
       <updated>1765354661756</updated>
     </task>
+    <task id="LOCAL−00001" summary="added contatcs and management">
+      <option name="closed" value="true" />
+      <created>1765362635585</created>
+      <option name="number" value="LOCAL−00001" />
+      <option name="presentableId" value="LOCAL−00001" />
+      <updated>1765362635585</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added contatcs and management" />
+    <option name="LAST_COMMIT_MESSAGE" value="added contatcs and management" />
   </component>
 </project>

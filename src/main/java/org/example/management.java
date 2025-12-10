@@ -32,6 +32,8 @@ public class management {
     }
 
     public List<Contact> getAllContacts() {
-        return new ArrayList<>(contacts);
+        List<Contact> sortedContacts = new ArrayList<>(contacts);
+        sortedContacts.sort(Comparator.comparing(Contact::getName, String.CASE_INSENSITIVE_ORDER));
+        return sortedContacts;
     }
 }
