@@ -16,6 +16,8 @@ public class Main {
             System.out.println("4. Display All Contacts");
             System.out.println("5. Delete by Name");
             System.out.println("6. Delete by Mobile");
+            System.out.println("7. Update number or name");
+            System.out.println("8.");
             System.out.println("0. Exit");
             System.out.print("Choose an option: ");
             choice = scanner.nextInt();
@@ -69,6 +71,25 @@ public class Main {
                     boolean deleted = dao.deleteByMobile(delMobile);
                     System.out.println(deleted ? "Contact deleted." : "No contact found with that mobile.");
                 }
+                case 7 -> {
+                    System.out.print("Enter number or name of contact to update: ");
+                    String oldMobile = scanner.nextLine();
+
+                    System.out.print("Enter new name (leave blank to keep current): ");
+                    String newName = scanner.nextLine();
+
+                    System.out.print("Enter new mobile (leave blank to keep current): ");
+                    String newMobile = scanner.nextLine();
+
+                    Contact updated = dao.updateContact(oldMobile, newName, newMobile);
+                    if (updated != null) {
+                        System.out.println("Contact updated successfully!");
+                    } else {
+                        System.out.println("Update failed (contact not found or duplicate).");
+                    }
+                }
+
+
 
 
                 case 0 -> System.out.println("Exiting...");

@@ -68,5 +68,41 @@ public class management {
         return removed;
     }
 
+    public Contact updateContact(String identifier, String newName, String newMobile) {
+        for (Contact c : contacts) {
+
+            if (c.getName().equalsIgnoreCase(identifier) || c.getMobile().equals(identifier)) {
+                Contact original = new Contact(c.getName(), c.getMobile());
+
+
+                String updatedName = (newName == null || newName.isBlank()) ? c.getName() : newName.trim();
+                String updatedMobile = (newMobile == null || newMobile.isBlank()) ? c.getMobile() : newMobile.trim();
+                Contact updated = new Contact(updatedName, updatedMobile);
+
+
+                if (contactSet.contains(updated)) {
+                    return null;
+                }
+
+
+                contacts.remove(c);
+                contactSet.remove(c);
+
+
+                contacts.add(updated);
+                contactSet.add(updated);
+
+                System.out.println("Original: " + original);
+                System.out.println("Updated: " + updated);
+
+                return updated;
+            }
+        }
+        return null;
+    }
+
+
+
+
 
 }
