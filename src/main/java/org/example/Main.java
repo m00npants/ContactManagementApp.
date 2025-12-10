@@ -2,6 +2,7 @@ package org.example;
 
 import java.util.*;
 
+
 public class Main {
      static void main() {
         Scanner scanner = new Scanner(System.in);
@@ -21,7 +22,7 @@ public class Main {
             System.out.println("0. Exit");
             System.out.print("Choose an option: ");
             choice = scanner.nextInt();
-            scanner.nextLine(); // consume newline
+            scanner.nextLine();
 
             switch (choice) {
                 case 1 -> {
@@ -90,11 +91,10 @@ public class Main {
                 }
 
 
-
-
                 case 0 -> System.out.println("Exiting...");
                 default -> System.out.println("Invalid option.");
             }
         } while (choice != 0);
     }
+
 }

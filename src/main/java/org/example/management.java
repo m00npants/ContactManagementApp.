@@ -100,6 +100,18 @@ public class management {
         }
         return null;
     }
+    public List<Contact> search(String query) {
+        List<Contact> results = new ArrayList<>();
+        String lowerQuery = query.toLowerCase();
+
+        for (Contact c : contacts) {
+            if (c.getName().toLowerCase().contains(lowerQuery) || c.getMobile().contains(query)) {
+                results.add(c);
+            }
+        }
+        return results;
+    }
+
 
 
 
