@@ -216,8 +216,8 @@ public class ContactManagerGUI extends JFrame {
         }
     }
 
-    // Entry point
-    public static void main(String[] args) {
+
+     static void main() {
         SwingUtilities.invokeLater(() -> {
             ContactManagerGUI gui = new ContactManagerGUI();
             gui.setVisible(true);

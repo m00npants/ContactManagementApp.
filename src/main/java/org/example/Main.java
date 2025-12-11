@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.*;
 
-
+//Menu
 public class Main {
      static void main() {
         Scanner scanner = new Scanner(System.in);
