@@ -70,7 +70,7 @@ public class Main {
                     System.out.print("Enter mobile to delete: ");
                     String delMobile = scanner.nextLine();
                     boolean deleted = dao.deleteByMobile(delMobile);
-                    System.out.println(deleted ? "Contact deleted." : "No contact found with that mobile.");
+                    System.out.println(deleted ? "Contact deleted." : "No contact found with that number.");
                 }
                 case 7 -> {
                     System.out.print("Enter number or name of contact to update: ");
