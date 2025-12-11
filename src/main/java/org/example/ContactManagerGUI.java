@@ -9,12 +9,12 @@ import java.util.List;
 public class ContactManagerGUI extends JFrame {
     private final management dao = new management();
 
-    // Table with three action columns
+
     private final String[] columnNames = {"Name", "Mobile", "Change Name", "Change Number", "Delete"};
     private final DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0) {
         @Override
         public boolean isCellEditable(int row, int column) {
-            // Only action columns are editable
+
             return column >= 2;
         }
     };
@@ -26,7 +26,7 @@ public class ContactManagerGUI extends JFrame {
     public ContactManagerGUI() {
         super("Contact Manager");
 
-        // Modern Look & Feel
+
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
@@ -37,13 +37,13 @@ public class ContactManagerGUI extends JFrame {
         setSize(700, 400);
         setLayout(new BorderLayout());
 
-        // Table styling
+
         contactTable.setFillsViewportHeight(true);
         contactTable.setRowHeight(25);
         contactTable.setFont(new Font("Segoe UI", Font.PLAIN, 13));
         contactTable.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 14));
 
-        // Alternate row colors
+
         contactTable.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value,
@@ -57,7 +57,7 @@ public class ContactManagerGUI extends JFrame {
             }
         });
 
-        // Attach button renderers/editors
+
         contactTable.getColumn("Change Name").setCellRenderer(new ButtonRenderer());
         contactTable.getColumn("Change Name").setCellEditor(new ButtonEditor("Change Name"));
 
@@ -69,7 +69,7 @@ public class ContactManagerGUI extends JFrame {
 
         add(new JScrollPane(contactTable), BorderLayout.CENTER);
 
-        // Input panel
+
         JPanel inputPanel = new JPanel(new GridLayout(2, 2, 10, 10));
         inputPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         inputPanel.add(new JLabel("Name:"));
@@ -78,21 +78,22 @@ public class ContactManagerGUI extends JFrame {
         inputPanel.add(mobileField);
         add(inputPanel, BorderLayout.NORTH);
 
-        // Toolbar-style buttons
+
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
         JButton addBtn = new JButton("Add");
         JButton searchBtn = new JButton("Search");
         JButton showAllBtn = new JButton("Show All");
+        JButton exportBtn = new JButton("Export CSV"); // NEW button
 
         Font btnFont = new Font("Segoe UI", Font.PLAIN, 13);
-        for (JButton btn : new JButton[]{addBtn, searchBtn, showAllBtn}) {
+        for (JButton btn : new JButton[]{addBtn, searchBtn, showAllBtn, exportBtn}) {
             btn.setFont(btnFont);
             btn.setFocusPainted(false);
             buttonPanel.add(btn);
         }
         add(buttonPanel, BorderLayout.SOUTH);
 
-        // Button actions
+
         addBtn.addActionListener(e -> {
             String name = nameField.getText();
             String mobile = mobileField.getText();
@@ -111,9 +112,25 @@ public class ContactManagerGUI extends JFrame {
         });
 
         showAllBtn.addActionListener(e -> refreshTable(dao.getAllContacts()));
+
+
+        exportBtn.addActionListener(e -> {
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setDialogTitle("Save Contacts as CSV");
+            int userSelection = fileChooser.showSaveDialog(this);
+
+            if (userSelection == JFileChooser.APPROVE_OPTION) {
+                String filePath = fileChooser.getSelectedFile().getAbsolutePath();
+                if (!filePath.endsWith(".csv")) {
+                    filePath += ".csv"; // ensure .csv extension
+                }
+                dao.exportToCSV(filePath);
+                JOptionPane.showMessageDialog(this, "Contacts exported to " + filePath);
+            }
+        });
     }
 
-    // Refresh table with contacts
+
     private void refreshTable(List<Contact> contacts) {
         tableModel.setRowCount(0);
         for (Contact c : contacts) {
@@ -121,7 +138,7 @@ public class ContactManagerGUI extends JFrame {
         }
     }
 
-    // Renderer for button columns
+
     class ButtonRenderer extends JButton implements javax.swing.table.TableCellRenderer {
         public ButtonRenderer() {
             setOpaque(true);
@@ -135,7 +152,7 @@ public class ContactManagerGUI extends JFrame {
         }
     }
 
-    // Editor for button columns
+
     class ButtonEditor extends DefaultCellEditor {
         private JButton button;
         private String actionType;

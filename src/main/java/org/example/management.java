@@ -1,5 +1,8 @@
 package org.example;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.*;
 
 public class management {
@@ -111,6 +114,18 @@ public class management {
         }
         return results;
     }
+    public void exportToCSV(String filePath) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(filePath))) {
+            writer.println("Name,Mobile");
+            for (Contact c : contacts) {
+                writer.println(c.getName() + "," + c.getMobile());
+            }
+            System.out.println("Contacts exported to " + filePath);
+        } catch (IOException e) {
+            System.err.println("Failed to export contacts: " + e.getMessage());
+        }
+    }
+
 
 
 
